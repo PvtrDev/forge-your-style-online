@@ -51,7 +51,7 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground text-xs tracking-widest uppercase animate-pulse">
-        ↓ Scroll
+        ↓ Przewiń
       </div>
     </section>
   );
