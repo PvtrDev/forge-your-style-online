@@ -22,7 +22,7 @@ export function Hero() {
           <span className="text-foreground/90">Top Rated on Google · 5.0</span>
         </div>
 
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-4">
+        <h1 className="font-display italic md:text-2xl text-muted-foreground mb-2 text-xl opacity-50">
           Barber's <span className="text-gold">Forge</span>
         </h1>
         <p className="font-display italic text-lg md:text-2xl text-muted-foreground mb-2">
@@ -51,7 +51,7 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground text-xs tracking-widest uppercase animate-pulse">
-        ↓ Scroll
+        ↓ Przewiń
       </div>
     </section>
   );
