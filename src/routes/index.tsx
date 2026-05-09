@@ -14,14 +14,6 @@ import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "Barber's Forge — Barberska Kuźnia | Kamienna Wola" },
-      { name: "description", content: "Premium barbershop Barber's Forge w Kamiennej Woli. Strzyżenie, broda, koloryzacja. Rezerwuj wizytę online — Top Rated 5.0 w Google." },
-      { property: "og:title", content: "Barber's Forge — Barberska Kuźnia" },
-      { property: "og:description", content: "Precyzja. Styl. Pewność siebie. Rezerwuj wizytę online." },
-    ],
-  }),
 });
 
 function Index() {
