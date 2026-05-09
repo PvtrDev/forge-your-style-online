@@ -9,11 +9,10 @@ export function Hero() {
         alt="Wnętrze barbershopu Barber's Forge"
         width={1920}
         height={1080}
-        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-background"
+        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-background opacity-40"
       />
       <div
-        className="absolute inset-0"
-        style={{ background: "var(--hero-overlay)" }}
+        className="absolute inset-0 bg-background/60"
       />
 
       <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl animate-fade-up">
