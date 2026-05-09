@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Barber's Forge - barberska kuźnia" },
+      { name: "description", content: "Barber’s Forge – barberska kuźnia z charakterem. Surowy klimat, precyzyjne strzyżenie i perfekcyjna broda. Umów wizytę już dziś." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Barber's Forge - barberska kuźnia" },
+      { property: "og:description", content: "Barber’s Forge – barberska kuźnia z charakterem. Surowy klimat, precyzyjne strzyżenie i perfekcyjna broda. Umów wizytę już dziś." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Barber's Forge - barberska kuźnia" },
+      { name: "twitter:description", content: "Barber’s Forge – barberska kuźnia z charakterem. Surowy klimat, precyzyjne strzyżenie i perfekcyjna broda. Umów wizytę już dziś." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b74b4168-473a-4caf-8a37-9c3b508be0ff/id-preview-f03e3286--f0e2f265-1450-4485-99c7-12395c6df939.lovable.app-1778274408839.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b74b4168-473a-4caf-8a37-9c3b508be0ff/id-preview-f03e3286--f0e2f265-1450-4485-99c7-12395c6df939.lovable.app-1778274408839.png" },
     ],
     links: [
       {
