@@ -7,6 +7,7 @@ import { Services } from "@/components/site/Services";
 import { Reviews } from "@/components/site/Reviews";
 import { Gallery } from "@/components/site/Gallery";
 import { Team } from "@/components/site/Team";
+import { YouTube } from "@/components/site/YouTube";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Booking } from "@/components/site/Booking";
 import { Contact } from "@/components/site/Contact";
@@ -27,6 +28,7 @@ function Index() {
         <WhyUs />
         <Reviews />
         <Gallery />
+        <YouTube />
         <Team />
         <Booking />
         <Contact />
