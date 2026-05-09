@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/logo.jpg";
 import { Star, ArrowRight } from "lucide-react";
 
 export function Hero() {
@@ -9,7 +9,7 @@ export function Hero() {
         alt="Wnętrze barbershopu Barber's Forge"
         width={1920}
         height={1080}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-background"
       />
       <div
         className="absolute inset-0"
