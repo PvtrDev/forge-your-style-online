@@ -74,7 +74,11 @@ serve(async (req) => {
     const hasHeader = first.includes("name") || first.includes("imie") || first.includes("date");
     const dataRows = hasHeader ? rows.slice(1) : rows;
 
-    const today = todayWarsaw();
+    const urlObj = new URL(req.url);
+    const requested = urlObj.searchParams.get("date");
+    const target = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested)
+      ? requested
+      : todayWarsaw();
 
     const bookings = dataRows
       .map((r) => ({
@@ -83,7 +87,7 @@ serve(async (req) => {
         date: normalizeDate((r[3] ?? "").toString()),
         time: (r[4] ?? "").toString().trim(),
       }))
-      .filter((b) => b.date === today && (b.name || b.service || b.time))
+      .filter((b) => b.date === target && (b.name || b.service || b.time))
       .map(({ time, name, service }) => ({ time, name, service }))
       .sort((a, b) => a.time.localeCompare(b.time));
 
