@@ -75,7 +75,13 @@ serve(async (req) => {
     const dataRows = hasHeader ? rows.slice(1) : rows;
 
     const urlObj = new URL(req.url);
-    const requested = urlObj.searchParams.get("date");
+    let requested = urlObj.searchParams.get("date");
+    if (!requested && req.method !== "GET" && req.method !== "HEAD") {
+      try {
+        const body = await req.json();
+        if (body && typeof body.date === "string") requested = body.date;
+      } catch (_) { /* ignore */ }
+    }
     const target = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested)
       ? requested
       : todayWarsaw();
