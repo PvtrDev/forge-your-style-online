@@ -1,1 +1,3 @@
 project_id = "rdawmkxpnumyxsqlycxs"
+[functions.today-bookings]
+verify_jwt = false
