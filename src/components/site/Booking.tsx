@@ -122,6 +122,21 @@ export function Booking() {
     }
 
     setConfirmed(true);
+
+    // Wyślij webhook do Make.com (nie blokuje UX jeśli się nie powiedzie)
+    fetch("https://hook.eu1.make.com/721j2eguv8n77i7lb1tifqscapyafsfy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name.trim(),
+        phone: phone.trim(),
+        service: service.name,
+        date: format(date, "yyyy-MM-dd"),
+        time: slot,
+        notes: notes.trim(),
+      }),
+    }).catch((err) => console.error("Webhook error:", err));
+
     toast.success("Rezerwacja przyjęta!", {
       description: `${service.name} · ${format(date, "EEEE, d MMM", { locale: pl })} o ${slot}`,
       duration: 6000,
