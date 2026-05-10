@@ -123,9 +123,7 @@ function Dashboard() {
     queryFn: async (): Promise<TodayBooking[]> => {
       const { data, error } = await supabase.functions.invoke("today-bookings", {
         body: { date: isoDate },
-        method: "GET",
-      } as never);
-      // Edge function reads ?date= from URL; fall back via direct fetch if invoke shape differs
+      });
       if (error) throw error;
       return (data?.bookings ?? []) as TodayBooking[];
     },
