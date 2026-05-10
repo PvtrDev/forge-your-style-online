@@ -1,8 +1,10 @@
-import { createFileRoute, useServerFn } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState, type FormEvent } from "react";
-import { getTodayBookings } from "@/lib/bookings.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
+
+type TodayBooking = { time: string; name: string; service: string };
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Clock, User, Scissors, Lock, RefreshCw } from "lucide-react";
@@ -82,10 +84,13 @@ function PasswordGate({ onSuccess }: { onSuccess: () => void }) {
 }
 
 function Dashboard() {
-  const fetchBookings = useServerFn(getTodayBookings);
   const { data, isLoading, isError, refetch, isFetching, dataUpdatedAt } = useQuery({
     queryKey: ["today-bookings"],
-    queryFn: () => fetchBookings(),
+    queryFn: async (): Promise<TodayBooking[]> => {
+      const { data, error } = await supabase.functions.invoke("today-bookings");
+      if (error) throw error;
+      return (data?.bookings ?? []) as TodayBooking[];
+    },
     refetchInterval: 30_000,
     refetchOnWindowFocus: true,
   });
