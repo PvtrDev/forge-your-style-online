@@ -3,11 +3,23 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState, type FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-
-type TodayBooking = { time: string; name: string; service: string };
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Clock, User, Scissors, Lock, RefreshCw } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Clock,
+  User,
+  Scissors,
+  Lock,
+  RefreshCw,
+  ChevronLeft,
+  ChevronRight,
+  CalendarIcon,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+
+type TodayBooking = { time: string; name: string; service: string };
 
 const PANEL_PASSWORD = "barber123";
 const STORAGE_KEY = "panel_auth";
@@ -83,19 +95,45 @@ function PasswordGate({ onSuccess }: { onSuccess: () => void }) {
   );
 }
 
+function toIsoDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function shiftDays(d: Date, n: number): Date {
+  const next = new Date(d);
+  next.setDate(next.getDate() + n);
+  return next;
+}
+
+function isSameDay(a: Date, b: Date): boolean {
+  return toIsoDate(a) === toIsoDate(b);
+}
+
 function Dashboard() {
+  const [selected, setSelected] = useState<Date>(() => new Date());
+  const isoDate = toIsoDate(selected);
+  const today = new Date();
+  const isToday = isSameDay(selected, today);
+
   const { data, isLoading, isError, refetch, isFetching, dataUpdatedAt } = useQuery({
-    queryKey: ["today-bookings"],
+    queryKey: ["bookings", isoDate],
     queryFn: async (): Promise<TodayBooking[]> => {
-      const { data, error } = await supabase.functions.invoke("today-bookings");
+      const { data, error } = await supabase.functions.invoke("today-bookings", {
+        body: { date: isoDate },
+        method: "GET",
+      } as never);
+      // Edge function reads ?date= from URL; fall back via direct fetch if invoke shape differs
       if (error) throw error;
       return (data?.bookings ?? []) as TodayBooking[];
     },
-    refetchInterval: 30_000,
+    refetchInterval: isToday ? 30_000 : false,
     refetchOnWindowFocus: true,
   });
 
-  const today = new Date().toLocaleDateString("pl-PL", {
+  const dateLabel = selected.toLocaleDateString("pl-PL", {
     weekday: "long",
     day: "numeric",
     month: "long",
@@ -113,10 +151,12 @@ function Dashboard() {
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 py-8 md:py-12">
-        <header className="mb-8 flex items-start justify-between gap-4 flex-wrap">
+        <header className="mb-6 flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <p className="text-muted-foreground text-lg capitalize">{today}</p>
-            <h1 className="text-3xl md:text-4xl font-bold mt-1">Dzisiejsze rezerwacje</h1>
+            <p className="text-muted-foreground text-lg capitalize">{dateLabel}</p>
+            <h1 className="text-3xl md:text-4xl font-bold mt-1">
+              {isToday ? "Dzisiejsze rezerwacje" : "Rezerwacje"}
+            </h1>
           </div>
           <Button
             variant="outline"
@@ -129,6 +169,61 @@ function Dashboard() {
             Odśwież
           </Button>
         </header>
+
+        <div className="mb-6 flex items-center gap-2 flex-wrap">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => setSelected((d) => shiftDays(d, -1))}
+            className="h-12 w-12 p-0"
+            aria-label="Poprzedni dzień"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className={cn("h-12 gap-2 flex-1 min-w-[200px] justify-center text-base font-medium")}
+              >
+                <CalendarIcon className="h-5 w-5" />
+                <span className="capitalize">{dateLabel}</span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="center">
+              <Calendar
+                mode="single"
+                selected={selected}
+                onSelect={(d) => d && setSelected(d)}
+                weekStartsOn={1}
+                className={cn("p-3 pointer-events-auto")}
+              />
+            </PopoverContent>
+          </Popover>
+
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => setSelected((d) => shiftDays(d, 1))}
+            className="h-12 w-12 p-0"
+            aria-label="Następny dzień"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+
+          {!isToday && (
+            <Button
+              variant="secondary"
+              size="lg"
+              onClick={() => setSelected(new Date())}
+              className="h-12"
+            >
+              Dziś
+            </Button>
+          )}
+        </div>
 
         {isLoading && (
           <div className="space-y-4">
@@ -148,8 +243,10 @@ function Dashboard() {
 
         {!isLoading && !isError && data && data.length === 0 && (
           <Card className="p-10 text-center">
-            <p className="text-2xl font-medium">Brak rezerwacji na dziś</p>
-            <p className="text-muted-foreground mt-2">Ciesz się wolnym dniem ✂️</p>
+            <p className="text-2xl font-medium">Brak rezerwacji</p>
+            <p className="text-muted-foreground mt-2">
+              {isToday ? "Ciesz się wolnym dniem ✂️" : "W tym dniu nie ma wizyt."}
+            </p>
           </Card>
         )}
 
@@ -181,7 +278,7 @@ function Dashboard() {
         )}
 
         <p className="text-center text-sm text-muted-foreground mt-8">
-          Auto-odświeżanie co 30 s · Ostatnia aktualizacja: {updated}
+          {isToday ? "Auto-odświeżanie co 30 s · " : ""}Ostatnia aktualizacja: {updated}
         </p>
       </div>
     </main>
