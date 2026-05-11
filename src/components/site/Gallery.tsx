@@ -3,10 +3,12 @@ import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
+import g5 from "@/assets/gallery-5.jpg";
 
 const images = [
   { src: g4, alt: "Wnętrze barbershopu" },
   { src: g2, alt: "Stylizacja włosów" },
+  { src: g5, alt: "Strzyżenie brody maszynką" },
   { src: g1, alt: "Pielęgnacja brody" },
   { src: g3, alt: "Narzędzia barberskie" },
 ];
