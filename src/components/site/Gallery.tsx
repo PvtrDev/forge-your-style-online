@@ -8,6 +8,7 @@ import g6 from "@/assets/gallery-6.jpg";
 import g7 from "@/assets/gallery-7.jpg";
 import g8 from "@/assets/gallery-8.jpg";
 import g9 from "@/assets/gallery-9.jpg";
+import g10 from "@/assets/gallery-10.jpg";
 
 const images = [
   { src: g4, alt: "Wnętrze barbershopu" },
@@ -17,6 +18,7 @@ const images = [
   { src: g2, alt: "Stylizacja włosów" },
   { src: g5, alt: "Strzyżenie brody maszynką" },
   { src: g6, alt: "Konturowanie brody trymerem" },
+  { src: g10, alt: "Precyzyjne konturowanie brody trymerem" },
   { src: g1, alt: "Pielęgnacja brody" },
   { src: g3, alt: "Narzędzia barberskie" },
 ];
