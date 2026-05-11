@@ -5,9 +5,11 @@ import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
 import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
+import g7 from "@/assets/gallery-7.jpg";
 
 const images = [
   { src: g4, alt: "Wnętrze barbershopu" },
+  { src: g7, alt: "Barber przy pracy nad brodą klienta" },
   { src: g2, alt: "Stylizacja włosów" },
   { src: g5, alt: "Strzyżenie brody maszynką" },
   { src: g6, alt: "Konturowanie brody trymerem" },
