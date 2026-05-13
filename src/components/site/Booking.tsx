@@ -14,6 +14,9 @@ import { cn } from "@/lib/utils";
 
 const SLOT_STEP = 15; // minutes
 
+// Ustaw na false, aby tymczasowo wyłączyć możliwość rezerwacji online
+const BOOKING_ENABLED = false;
+
 function toMin(t: string) {
   const [h, m] = t.split(":").map(Number);
   return h * 60 + m;
