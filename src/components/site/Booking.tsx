@@ -14,6 +14,9 @@ import { cn } from "@/lib/utils";
 
 const SLOT_STEP = 15; // minutes
 
+// Ustaw na false, aby tymczasowo wyłączyć możliwość rezerwacji online
+const BOOKING_ENABLED = false;
+
 function toMin(t: string) {
   const [h, m] = t.split(":").map(Number);
   return h * 60 + m;
@@ -172,6 +175,23 @@ export function Booking() {
           subtitle="Wybierz usługę, datę i wolny termin — gotowe w kilka sekund."
         />
 
+        {!BOOKING_ENABLED ? (
+          <div className="max-w-2xl mx-auto bg-card border border-primary/30 rounded-xl shadow-card p-8 md:p-12 text-center">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 border border-primary/30 mb-5">
+              <Clock className="h-6 w-6 text-gold" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-display mb-3">Rezerwacje online chwilowo niedostępne</h3>
+            <p className="text-muted-foreground mb-6">
+              Aby umówić wizytę, skontaktuj się z nami telefonicznie lub przez Instagram. Dziękujemy za wyrozumiałość!
+            </p>
+            <a
+              href="#kontakt"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-gradient-gold text-primary-foreground font-semibold hover:shadow-glow transition-all"
+            >
+              Przejdź do kontaktu <ChevronRight className="h-4 w-4" />
+            </a>
+          </div>
+        ) : (
         <div className="max-w-5xl mx-auto bg-card border border-primary/30 rounded-xl shadow-card overflow-hidden">
           <div className="grid lg:grid-cols-[1.1fr_1fr]">
             {/* LEFT: Service + date + slots */}
@@ -351,6 +371,7 @@ export function Booking() {
             </form>
           </div>
         </div>
+        )}
       </div>
     </section>
   );
