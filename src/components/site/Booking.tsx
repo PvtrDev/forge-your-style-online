@@ -371,7 +371,10 @@ export function Booking() {
             </form>
           </div>
         </div>
+        )}
       </div>
     </section>
+  );
+}
   );
 }
