@@ -9,14 +9,14 @@ import g7 from "@/assets/gallery-7.jpg";
 import g8 from "@/assets/gallery-8.jpg";
 import g9 from "@/assets/gallery-9.jpg";
 import g10 from "@/assets/gallery-10.jpg";
-import g11 from "@/assets/gallery-11.jpg.asset.json";
-import g12 from "@/assets/gallery-12.jpg.asset.json";
+import g11 from "@/assets/gallery-11.jpg";
+import g12 from "@/assets/gallery-12.jpg";
 
 const images = [
   { src: g4, alt: "Wnętrze barbershopu" },
-  { src: g11.url, alt: "Zespół Barber's Forge — Sołtys i Sebastian" },
+  { src: g11, alt: "Zespół Barber's Forge — Sołtys i Sebastian" },
   { src: g7, alt: "Barber przy pracy nad brodą klienta" },
-  { src: g12.url, alt: "Sołtys i Sebastian w barbershopie" },
+  { src: g12, alt: "Sołtys i Sebastian w barbershopie" },
   { src: g8, alt: "Zadowolony klient po strzyżeniu" },
   { src: g9, alt: "Uśmiechnięty klient podczas stylizacji" },
   { src: g2, alt: "Stylizacja włosów" },
