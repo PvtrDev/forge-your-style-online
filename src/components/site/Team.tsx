@@ -1,6 +1,6 @@
 import { SectionTitle } from "./SectionTitle";
 import barber from "@/assets/barber-robert.jpg";
-import sebastian from "@/assets/barber-sebastian.jpg.asset.json";
+import sebastian from "@/assets/barber-sebastian.jpg";
 import { Instagram } from "lucide-react";
 
 const team = [
@@ -13,7 +13,7 @@ const team = [
   {
     name: "Sebastian",
     role: "Barber",
-    img: sebastian.url,
+    img: sebastian,
     bio: "Precyzja, dobre oko i wyczucie stylu. Sebastian łączy klasyczne fade'y z nowoczesnymi trendami — u niego każde strzyżenie to pełen luz i solidne rzemiosło.",
   },
 ];
