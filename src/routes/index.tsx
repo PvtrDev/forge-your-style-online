@@ -9,7 +9,6 @@ import { Gallery } from "@/components/site/Gallery";
 import { Team } from "@/components/site/Team";
 import { YouTube } from "@/components/site/YouTube";
 import { WhyUs } from "@/components/site/WhyUs";
-import { Booking } from "@/components/site/Booking";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
@@ -30,7 +29,6 @@ function Index() {
         <Gallery />
         <YouTube />
         <Team />
-        <Booking />
         <Contact />
       </main>
       <Footer />

@@ -35,8 +35,8 @@ export function Services() {
                 <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
                   <Clock className="h-3.5 w-3.5" /> {fmtDuration(s.duration)}
                 </span>
-                <a href={`#rezerwacja`} className="text-xs uppercase tracking-wider text-primary hover:text-accent">
-                  Rezerwuj →
+                <a href="#kontakt" className="text-xs uppercase tracking-wider text-primary hover:text-accent">
+                  Umów się →
                 </a>
               </div>
             </div>
