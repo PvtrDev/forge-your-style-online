@@ -48,10 +48,10 @@ export function Navbar() {
             <Phone className="h-4 w-4" /> 795 586 235
           </a>
           <a
-            href="#rezerwacja"
+            href="#kontakt"
             className="px-4 py-2 rounded-md bg-gradient-gold text-primary-foreground text-sm font-medium hover:shadow-glow transition-all"
           >
-            Rezerwuj
+            Kontakt
           </a>
         </div>
 
@@ -69,11 +69,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#rezerwacja"
+              href="#kontakt"
               onClick={() => setOpen(false)}
               className="mt-2 px-4 py-3 rounded-md bg-gradient-gold text-primary-foreground text-center font-medium"
             >
-              Rezerwuj wizytę
+              Skontaktuj się
             </a>
           </nav>
         </div>

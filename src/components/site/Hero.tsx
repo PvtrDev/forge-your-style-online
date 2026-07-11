@@ -34,10 +34,10 @@ export function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
-            href="#rezerwacja"
+            href="#kontakt"
             className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-gradient-gold text-primary-foreground font-semibold shadow-glow hover:scale-[1.03] transition-transform"
           >
-            Zarezerwuj wizytę
+            Skontaktuj się
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
