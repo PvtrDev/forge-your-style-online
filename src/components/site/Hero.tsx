@@ -1,32 +1,28 @@
-import heroImg from "@/assets/logo.jpg";
+import logoHero from "@/assets/logo-hero.png";
 import { Star, ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Wnętrze barbershopu Barber's Forge"
-        width={1920}
-        height={1080}
-        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-background opacity-40"
-      />
-      <div
-        className="absolute inset-0 bg-background/60"
-      />
-
       <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl animate-fade-up">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-primary/40 bg-background/40 backdrop-blur-sm text-xs uppercase tracking-widest">
           <Star className="h-3.5 w-3.5 fill-primary text-primary" />
           <span className="text-foreground/90">Top Rated on Google · 5.0</span>
         </div>
 
-        <h1 className="font-blackletter text-5xl md:text-7xl lg:text-8xl leading-[1.15] mb-4">
-          Barber's <span className="text-gold">Forge</span>
+        <h1 className="mb-4">
+          <img
+            src={logoHero}
+            alt="Barber's Forge — Barberska Kuźnia"
+            width={1024}
+            height={1024}
+            className="mx-auto w-full max-w-md md:max-w-xl h-auto"
+          />
         </h1>
         <p className="font-display italic text-lg md:text-2xl text-muted-foreground mb-2">
           Precyzja. Styl. Pewność siebie.
         </p>
+
         <p className="text-foreground/70 max-w-xl mx-auto mb-10 text-base md:text-lg">
           Barberska Kuźnia, w której każde strzyżenie to rzemiosło.
           Klasyczne techniki, nowoczesny styl, atmosfera, do której wracasz.
