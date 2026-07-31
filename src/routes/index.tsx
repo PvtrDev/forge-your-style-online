@@ -18,8 +18,22 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-background text-foreground">
+      {/* Stałe, subtelne logo w tle — widoczne podczas przewijania */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-0 hidden md:block"
+        style={{
+          backgroundImage: `url(${logoImg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "min(60vw, 700px)",
+          opacity: 0.06,
+        }}
+      />
+      <div className="relative z-10">
       <Navbar />
+
       <main>
         <Hero />
         <About />
