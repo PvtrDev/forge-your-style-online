@@ -11,6 +11,7 @@ import { YouTube } from "@/components/site/YouTube";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import logoImg from "@/assets/logo.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -18,20 +19,35 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <WhyUs />
-        <Reviews />
-        <Gallery />
-        <YouTube />
-        <Team />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="relative min-h-screen bg-background text-foreground">
+      {/* Stałe, subtelne logo w tle — widoczne podczas przewijania */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-30 hidden md:block mix-blend-screen"
+        style={{
+          backgroundImage: `url(${logoImg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "min(55vw, 620px)",
+          opacity: 0.07,
+        }}
+      />
+      <div className="relative z-10">
+        <Navbar />
+
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <WhyUs />
+          <Reviews />
+          <Gallery />
+          <YouTube />
+          <Team />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
       <Toaster richColors position="bottom-right" />
     </div>
   );
