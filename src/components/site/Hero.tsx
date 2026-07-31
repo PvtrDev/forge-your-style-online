@@ -21,7 +21,7 @@ export function Hero() {
           <span className="text-foreground/90">Top Rated on Google · 5.0</span>
         </div>
 
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-4">
+        <h1 className="font-blackletter text-5xl md:text-7xl lg:text-8xl leading-[1.15] mb-4">
           Barber's <span className="text-gold">Forge</span>
         </h1>
         <p className="font-display italic text-lg md:text-2xl text-muted-foreground mb-2">
