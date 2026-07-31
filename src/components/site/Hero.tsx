@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/logo-forge.png.asset.json";
+import logoHero from "@/assets/logo-hero.png";
 import { Star, ArrowRight } from "lucide-react";
 
 export function Hero() {
