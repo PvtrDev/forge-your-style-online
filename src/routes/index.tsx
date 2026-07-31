@@ -23,13 +23,13 @@ function Index() {
       {/* Stałe, subtelne logo w tle — widoczne podczas przewijania */}
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 z-0 hidden md:block"
+        className="pointer-events-none fixed inset-0 z-30 hidden md:block mix-blend-screen"
         style={{
           backgroundImage: `url(${logoImg})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          backgroundSize: "min(60vw, 700px)",
-          opacity: 0.06,
+          backgroundSize: "min(55vw, 620px)",
+          opacity: 0.07,
         }}
       />
       <div className="relative z-10">
