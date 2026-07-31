@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Scissors, Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
+import logoImg from "@/assets/logo.jpg";
 
 const links = [
   { href: "#o-nas", label: "O nas" },
@@ -29,7 +30,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-2 group">
-          <Scissors className="h-5 w-5 text-primary transition-transform group-hover:rotate-12" />
+          <img src={logoImg} alt="Logo Barber's Forge" className="h-9 w-9 rounded-full object-cover ring-1 ring-primary/50 transition-transform group-hover:scale-105" />
           <span className="font-display text-lg tracking-wide">
             Barber's <span className="text-gold">Forge</span>
           </span>
