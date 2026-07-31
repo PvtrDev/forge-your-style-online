@@ -12,7 +12,7 @@ export function Hero() {
 
         <h1 className="mb-4">
           <img
-            src={logoAsset.url}
+            src={logoHero}
             alt="Barber's Forge — Barberska Kuźnia"
             width={1024}
             height={1024}
