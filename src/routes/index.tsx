@@ -32,20 +32,21 @@ function Index() {
         }}
       />
       <div className="relative z-10">
-      <Navbar />
+        <Navbar />
 
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <WhyUs />
-        <Reviews />
-        <Gallery />
-        <YouTube />
-        <Team />
-        <Contact />
-      </main>
-      <Footer />
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <WhyUs />
+          <Reviews />
+          <Gallery />
+          <YouTube />
+          <Team />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
       <Toaster richColors position="bottom-right" />
     </div>
   );
