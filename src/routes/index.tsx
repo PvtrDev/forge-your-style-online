@@ -11,6 +11,7 @@ import { YouTube } from "@/components/site/YouTube";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import logoImg from "@/assets/logo.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
